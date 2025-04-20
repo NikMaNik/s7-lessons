@@ -1,1 +1,10 @@
-Сохраните сюда результат вывода:
++-------+-------------------------+-----------------+
+|book_id|title                    |author           |
++-------+-------------------------+-----------------+
+|299    |Bad Girls                |Jacqueline Wilson|
+|174    |Catch-22                 |Joseph Heller    |
+|168    |The Catcher in the Rye   |J. D. Salinger   |
+|300    |The Mayor of Casterbridge|Thomas Hardy     |
+|259    |The Wind in the Willows  |Kenneth Grahame  |
++-------+-------------------------+-----------------+
+
