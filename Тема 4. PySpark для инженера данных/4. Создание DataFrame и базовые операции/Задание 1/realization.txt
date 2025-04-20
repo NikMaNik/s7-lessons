@@ -1,8 +1,4 @@
-+------+---+
-|  Name|Age|
-+------+---+
-|   Max| 55|
-|   Yan| 53|
-|Dmitry| 54|
-|   Ann| 25|
-+------+---+
+root
+ |-- Name: string (nullable = true)
+ |-- Age: long (nullable = true)
+
