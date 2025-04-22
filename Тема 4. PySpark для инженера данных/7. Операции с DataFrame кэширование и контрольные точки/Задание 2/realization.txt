@@ -1,1 +1,28 @@
-Сохраните сюда результат вывода:
+== Physical Plan ==
+AdaptiveSparkPlan isFinalPlan=true
++- == Final Plan ==
+   *(3) Project [book_id#2L, title#0, author#1]
+   +- *(3) BroadcastHashJoin [book_id#2L], [book_id#6L], LeftAnti, BuildRight, false
+      :- AQEShuffleRead local
+      :  +- ShuffleQueryStage 0
+      :     +- Exchange hashpartitioning(book_id#2L, 200), ENSURE_REQUIREMENTS, [plan_id=35]
+      :        +- *(1) Scan ExistingRDD[title#0,author#1,book_id#2L]
+      +- BroadcastQueryStage 2
+         +- BroadcastExchange HashedRelationBroadcastMode(List(input[0, bigint, true]),false), [plan_id=86]
+            +- AQEShuffleRead local
+               +- ShuffleQueryStage 1
+                  +- Exchange hashpartitioning(book_id#6L, 200), ENSURE_REQUIREMENTS, [plan_id=49]
+                     +- *(2) Project [book_id#6L]
+                        +- *(2) Filter isnotnull(book_id#6L)
+                           +- *(2) Scan ExistingRDD[book_id#6L,Library_id#7]
++- == Initial Plan ==
+   Project [book_id#2L, title#0, author#1]
+   +- SortMergeJoin [book_id#2L], [book_id#6L], LeftAnti
+      :- Sort [book_id#2L ASC NULLS FIRST], false, 0
+      :  +- Exchange hashpartitioning(book_id#2L, 200), ENSURE_REQUIREMENTS, [plan_id=25]
+      :     +- Scan ExistingRDD[title#0,author#1,book_id#2L]
+      +- Sort [book_id#6L ASC NULLS FIRST], false, 0
+         +- Exchange hashpartitioning(book_id#6L, 200), ENSURE_REQUIREMENTS, [plan_id=26]
+            +- Project [book_id#6L]
+               +- Filter isnotnull(book_id#6L)
+                  +- Scan ExistingRDD[book_id#6L,Library_id#7]
